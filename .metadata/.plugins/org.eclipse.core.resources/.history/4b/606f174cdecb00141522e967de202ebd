@@ -1,8 +1,0 @@
-package asgn1Tests;
-
-public class Snippet {
-	public String toString() {
-				return this.title + ":" + this.year + ":" + "Active keywords:" + this.numKeywords();
-			}
-}
-
