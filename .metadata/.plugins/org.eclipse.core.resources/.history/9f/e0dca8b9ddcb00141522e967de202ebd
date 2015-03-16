@@ -1,0 +1,87 @@
+/**
+ * 
+ * This file is part of the FilmFinder Project, written as 
+ * part of the assessment for CAB302, Semester 1, 2015. 
+ *
+ * FilmFinder
+ * asgn1Index 
+ * 14/03/2015
+ * 
+ */
+package asgn1Index;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Collection class for the similarity records based on 
+ * <code>AbstractRecordCollection</code>
+ * 
+ * @author hogan
+ *
+ */
+public class RecordCollection extends AbstractRecordCollection {
+	
+	/**
+	 * Constructor for the <code>RecordCollection</code> class. 
+	 * Initialises collection; no parameters
+	 */
+	public RecordCollection() {
+		this.records = new ArrayList<Record>(); 
+	} 
+	
+	/* (non-Javadoc)
+	 * @see asgn1Index.AbstractRecordCollection#addRecord(asgn1Index.Record)
+	 */
+	@Override
+	public void addRecord(Record r) throws IndexException {
+		if (r==null) {
+			throw new IndexException("Null record supplied");
+		}
+		this.records.add(r);
+	}
+	
+	/* (non-Javadoc)
+	 * @see asgn1Index.AbstractRecordCollection#findClosestRecord()
+	 */
+	@Override
+	public AbstractRecord findClosestRecord() throws IndexException {
+		if (!this.isSorted()) {
+			throw new IndexException("Collection not sorted");
+		}
+		return this.records.get(0);
+	}
+	
+	/* (non-Javadoc)
+	 * @see asgn1Index.AbstractRecordCollection#findClosestRecords(int)
+	 */
+	@Override
+	public List<Record> findClosestRecords(int n) throws IndexException {
+		if (!this.isSorted()) {
+			throw new IndexException("Collection not sorted");
+		}
+		if (n>this.records.size()) {
+			throw new IndexException("n > size of the collection");
+		}
+		return this.records.subList(0, n);
+	}
+	
+	/* (non-Javadoc)
+	 * @see asgn1Index.AbstractRecordCollection#isSorted()
+	 */
+	@Override
+	public boolean isSorted() {
+		return this.sorted;
+	}
+	
+	/* (non-Javadoc)
+	 * @see asgn1Index.AbstractRecordCollection#sortCollection()
+	 */
+	@Override
+	public void sortCollection() {
+		Collections.sort(this.records);
+		Collections.reverse(this.records);
+		this.sorted=true; 
+	}
+}

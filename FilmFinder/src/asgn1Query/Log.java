@@ -66,7 +66,7 @@ public class Log {
 	 * @param showListings <code>boolean</code> choose to record the listings; if <code>false</code>, the 
 	 * next two parameters are ignored.  
 	 * @param showKeywords <code>boolean</code> choose to record listing keywords 
-	 * @param showKeyVector <code>boolean</code> choose to record listing keyVectors
+	 * @param showKeyVectors <code>boolean</code> choose to record listing keyVectors
 	 * @throws QueryException if <code>isNull(c)</code> 
 	 * @throws IOException propagated from <code>BufferedWriter.write()</code>
 	 */
