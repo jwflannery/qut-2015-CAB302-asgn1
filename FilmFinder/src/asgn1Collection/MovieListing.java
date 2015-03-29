@@ -2,71 +2,68 @@ package asgn1Collection;
 
 import java.util.BitSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class MovieListing implements Listing {
 
-	private BitSet KeyVector = new BitSet();
-	private Set<String> keywords;
+
 	private String title;
 	private int year;
+	private BitSet keyVector;
+	private Set<String> keywords;
 	
 	
 	public MovieListing(java.lang.String title, int year) throws ListingException {
 		this.title = title;
 		this.year = year;
+		this.keywords = new TreeSet<String>();
 	}
              
 	@Override
 	public void addKeyword(String kw) throws ListingException {
-		// TODO Auto-generated method stub
-
+		this.keywords.add(kw);
 	}
 
 	@Override
 	public int findSimilarity(Listing l) throws ListingException {
-		// TODO Auto-generated method stub
-		return 0;
+		BitSet temp = this.getKeyVector();
+		temp.and(l.getKeyVector());
+		return temp.
+		cardinality();
 	}
 
 	@Override
 	public BitSet getKeyVector() throws ListingException {
-		// TODO Auto-generated method stub
-		return null;
+		return keyVector;
 	}
 
 	@Override
 	public Set<String> getKeywords() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.keywords;
 	}
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return title;
 	}
 
 	@Override
 	public int getYear() {
-		// TODO Auto-generated method stub
-		return 0;
+		return year;
 	}
 
 	@Override
 	public int numKeywords() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.keywords.size();
 	}
 
 	@Override
 	public void setKeyVector(BitSet bs) {
-		// TODO Auto-generated method stub
-
+		this.keyVector = bs;
 	}
 
 	@Override
 	public String writeKeyVector() throws ListingException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

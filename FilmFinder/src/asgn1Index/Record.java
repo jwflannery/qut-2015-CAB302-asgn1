@@ -1,21 +1,32 @@
 package asgn1Index;
 
-public class Record extends AbstractRecord {
-
+public class Record extends AbstractRecord implements Comparable<Record>{
+	
 	public Record(String title2, int i) {
-		// TODO Auto-generated constructor stub
+		this.title = title2;
+		this.similarity = i;
 	}
 
 	@Override
 	public int getSimilarity() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.similarity;
 	}
 
 	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.title;
+	}
+
+	@Override
+	public int compareTo(Record R) {
+			if (this.similarity > R.similarity)
+				return -1;
+			else if (this.similarity == R.similarity)
+				return 0;
+			else
+				return 1;
+				
 	}
 
 }

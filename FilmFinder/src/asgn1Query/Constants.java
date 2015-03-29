@@ -20,7 +20,7 @@ public class Constants {
 	//File Processing  
 	public static final boolean KEY_LOG = false; //Log keywords 
 	public static final String LOG_PREFIX = "movies";
-	public static final String SOURCE_FILE = "qutSmall5.txt";
+	public static final String SOURCE_FILE = "large19302015.txt";
 	public static final String KEY_PREFIX = "keywords";
 	
 	//Query Runners 

@@ -106,7 +106,7 @@ public class MovieCollection implements Collection {
 		do { 
 		  //Grab a line and parse it if we can 
 		  line = br.readLine(); 
-		  String title=""; String[] tokens = null;
+		  String	 title=""; String[] tokens = null;
 		  if (line!=null) { 
 			  tokens = line.split("\t");
 			  title=tokens[0];
