@@ -2,9 +2,10 @@ package asgn1Index;
 
 public class Record extends AbstractRecord implements Comparable<Record>{
 	
-	public Record(String title2, int i) {
-		this.title = title2;
-		this.similarity = i;
+
+	public Record(String title, int similarity) {
+		this.title = title;
+		this.similarity = similarity;
 	}
 
 	@Override

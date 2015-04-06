@@ -117,7 +117,7 @@ public class FilmFinder extends JFrame implements Runnable {
 		//Parse and index the collection 
 		try {
 			Index index = new Index(mc);
-			log=new Log(); 
+			log=new Log();
 			mc.getCollectionFromFile();
 			mc.generateKeyVectors();
 			index.createIndex();

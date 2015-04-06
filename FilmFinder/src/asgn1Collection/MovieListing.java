@@ -10,7 +10,7 @@ public class MovieListing implements Listing {
 	private String title;
 	private int year;
 	private BitSet keyVector;
-	private Set<String> keywords;
+	private TreeSet<String> keywords;
 	
 	
 	public MovieListing(java.lang.String title, int year) throws ListingException {
@@ -26,10 +26,10 @@ public class MovieListing implements Listing {
 
 	@Override
 	public int findSimilarity(Listing l) throws ListingException {
-		BitSet temp = this.getKeyVector();
+		BitSet temp = (BitSet)getKeyVector().clone();
 		temp.and(l.getKeyVector());
-		return temp.
-		cardinality();
+		int c = temp.cardinality();
+		return c;
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class MovieListing implements Listing {
 
 	@Override
 	public String writeKeyVector() throws ListingException {
-		return null;
+		return keyVector.toString();
 	}
 
 	/* (non-Javadoc)
