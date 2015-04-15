@@ -15,11 +15,11 @@ public class Record extends AbstractRecord implements Comparable<Record>{
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
 		return this.title;
 	}
 
 	@Override
+	
 	public int compareTo(Record R) {
 			if (this.similarity > R.similarity)
 				return -1;

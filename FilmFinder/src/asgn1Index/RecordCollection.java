@@ -12,24 +12,30 @@ public class RecordCollection extends AbstractRecordCollection {
 
 	@Override
 	public void addRecord(Record r) throws IndexException {
+		if(r == null)
+			throw new IndexException("Record is null");
 		this.records.add(r);
 	}
 
 	@Override
 	public AbstractRecord findClosestRecord() throws IndexException {
-		//sortCollection();
+		if (!this.isSorted())
+			throw new IndexException("Collection not sorted");
 		return this.records.get(0);
 	}
 
 	@Override
 	public List<Record> findClosestRecords(int n) throws IndexException {
+			if (!this.isSorted())
+				throw new IndexException("Collection not sorted");
+			if (n > this.records.size())
+				throw new IndexException("Query too large");
 			sortCollection();
 			return this.records.subList(0, n);
 	}
 
 	@Override
 	public boolean isSorted() {
-		// TODO Auto-generated method stub
 		return sorted;
 	}
 

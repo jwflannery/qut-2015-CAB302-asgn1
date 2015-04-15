@@ -14,6 +14,12 @@ public class MovieListing implements Listing {
 	
 	
 	public MovieListing(java.lang.String title, int year) throws ListingException {
+		
+		if(title == null || title == "")
+			throw new ListingException("Title is null or empty.");
+		if(year <= 0)
+			throw new ListingException("Year is zero or less");
+		
 		this.title = title;
 		this.year = year;
 		this.keywords = new TreeSet<String>();
@@ -21,11 +27,18 @@ public class MovieListing implements Listing {
              
 	@Override
 	public void addKeyword(String kw) throws ListingException {
+		if(kw == null || kw == "")
+			throw new ListingException("Keyword is null or empty.");
 		this.keywords.add(kw);
 	}
 
 	@Override
 	public int findSimilarity(Listing l) throws ListingException {
+		
+		if (getKeyVector() == null)
+			throw new ListingException("This KeyVector is null");
+		if (l.getKeyVector() == null)
+			throw new ListingException("Passed KeyVector is null");
 		BitSet temp = (BitSet)getKeyVector().clone();
 		temp.and(l.getKeyVector());
 		int c = temp.cardinality();
@@ -34,6 +47,8 @@ public class MovieListing implements Listing {
 
 	@Override
 	public BitSet getKeyVector() throws ListingException {
+		if (keyVector == null)
+			throw new ListingException("keyVector is null");		
 		return keyVector;
 	}
 
@@ -62,9 +77,11 @@ public class MovieListing implements Listing {
 		this.keyVector = bs;
 	}
 
-	@Override
+	@Override 
 	public String writeKeyVector() throws ListingException {
-		return keyVector.toString();
+		if (keyVector == null)
+			throw new ListingException("keyVector is null");
+		return this.keyVector.toString();
 	}
 
 	/* (non-Javadoc)
