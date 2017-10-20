@@ -19,7 +19,7 @@ public class RecordCollection extends AbstractRecordCollection {
 
 	@Override
 	public AbstractRecord findClosestRecord() throws IndexException {
-		if (!this.isSorted())
+		if (!this.isSorted() || this.records.size() == 0)
 			throw new IndexException("Collection not sorted");
 		return this.records.get(0);
 	}
